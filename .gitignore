@@ -1,0 +1,18 @@
+# Windows 찌꺼기 방어
+Thumbs.db
+Desktop.ini
+
+# IDE 및 빌드 인프라 격리
+.idea/
+.vscode/
+*.iml
+build/
+target/
+*.jar
+
+# 도커 실물 데이터 무조건 제외 (보안 및 용량 방어)
+mysql_data/
+static/makeup_outputs/
+
+# 설정 및 환경변수 가드
+.env
