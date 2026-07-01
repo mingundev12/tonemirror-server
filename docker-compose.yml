@@ -1,0 +1,38 @@
+# tonemirror-server docker-compose.yml
+
+services:
+  nginx:
+    image: nginx
+    contianer_name: nginx-server
+    ports:
+      - "28282:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - spring
+      - fast-api
+    restart: unless-stopped
+
+  spring:
+    build: ./tonemirror-spring
+    container_name: spring-server
+    depends_on:
+      - mysql
+  
+  fastapi:
+    build: ./tonemirror-python
+    container_name: fastapi-server
+    depends_on:
+      - mysql
+  
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-server
+    ports:
+      - "28336:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_DATABASE: tonemirror
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    restart: unless-stopped
