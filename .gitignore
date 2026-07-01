@@ -11,7 +11,7 @@ target/
 *.jar
 
 # 도커 실물 데이터 무조건 제외 (보안 및 용량 방어)
-mysql_data/
+mysql-data/
 static/makeup_outputs/
 
 # 설정 및 환경변수 가드

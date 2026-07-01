@@ -3,7 +3,7 @@
 services:
   nginx:
     image: nginx
-    contianer_name: nginx-server
+    container_name: nginx-server
     ports:
       - "28282:80"
     volumes:
@@ -11,6 +11,7 @@ services:
     depends_on:
       - spring
       - fast-api
+      - frontend
     restart: unless-stopped
 
   spring:
@@ -19,7 +20,7 @@ services:
     depends_on:
       - mysql
   
-  fastapi:
+  fast-api:
     build: ./tonemirror-python
     container_name: fastapi-server
     depends_on:
