@@ -25,6 +25,10 @@ services:
     depends_on:
       - mysql
   
+  frontend:
+    build: ./tonemirror-web
+    container_name: react-server
+  
   mysql:
     image: mysql:8.0
     container_name: mysql-server
