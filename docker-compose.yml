@@ -8,21 +8,30 @@ services:
       - "28282:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      # 커스텀 로그 추적을 위해 디폴트 로그를 무력화
+      - /dev/null:/etc/nginx/conf.d/default.conf
     depends_on:
       - spring
-      - fast-api
+      # - fastapi
       - frontend
     restart: unless-stopped
 
   spring:
     build: ./tonemirror-spring
     container_name: spring-server
+    volumes:
+      - ./storage:/app/storage
     depends_on:
       - mysql
   
-  fast-api:
+  fastapi:
     build: ./tonemirror-python
     container_name: fastapi-server
+    environment:
+      - IMAGE_PATH=/app/storage
+      - BASE_URL=http://localhost:28282/ai/
+    volumes:
+      - ./storage:/app/storage
     depends_on:
       - mysql
   
