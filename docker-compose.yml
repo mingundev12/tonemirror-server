@@ -30,6 +30,12 @@ services:
     environment:
       - IMAGE_PATH=/app/storage
       - BASE_URL=http://localhost:28282/ai/
+      # db.py 의 os.environ Key와 일치시키기 위한 매핑
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
     volumes:
       - ./storage:/app/storage
     depends_on:
