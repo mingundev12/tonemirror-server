@@ -21,6 +21,12 @@ services:
     container_name: spring-server
     volumes:
       - ./storage:/app/storage
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+      - SPRING_DATASOURCE_USERNAME=${DB_USER}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - IMAGE_PATH=${IMAGE_PATH}
+      - FASTAPI_URL=${FASTAPI_URL}
     depends_on:
       - mysql
   
