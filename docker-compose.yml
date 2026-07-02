@@ -12,7 +12,7 @@ services:
       - /dev/null:/etc/nginx/conf.d/default.conf
     depends_on:
       - spring
-      # - fastapi
+      - fastapi
       - frontend
     restart: unless-stopped
 
