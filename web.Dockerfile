@@ -4,11 +4,11 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY ./tonemirror-web/package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY ./tonemirror-web/ .
 
 EXPOSE 5173
 

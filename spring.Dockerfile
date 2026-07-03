@@ -4,7 +4,7 @@ FROM eclipse-temurin:17-jdk
 
 WORKDIR /app
 
-COPY *.jar app.jar
+COPY ./tonemirror-spring/*.jar app.jar
 
 EXPOSE 8080
 
