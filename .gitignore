@@ -29,3 +29,4 @@ storage/*
 !tonemirror-python/Dockerfile
 !tonemirror-web/Dockerfile
 !tonemirror-python/.dockerignore
+!tonemirror-python/requirements.txt
