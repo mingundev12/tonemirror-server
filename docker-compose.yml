@@ -35,7 +35,7 @@ services:
     container_name: fastapi-server
     environment:
       - IMAGE_PATH=/app/storage
-      - BASE_URL=http://localhost:28282/ai/
+      - BASE_URL=http://localhost:28282/ai
       # db.py 의 os.environ Key와 일치시키기 위한 매핑
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
