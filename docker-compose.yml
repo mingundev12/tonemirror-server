@@ -5,11 +5,13 @@ services:
     image: nginx
     container_name: nginx-server
     ports:
-      - "28282:80"
+      - "80:80"
+      - "28282:28282"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       # 커스텀 로그 추적을 위해 디폴트 로그를 무력화
       - /dev/null:/etc/nginx/conf.d/default.conf
+      - ./storage:/usr/share/nginx/html/storage
     depends_on:
       - spring
       - fastapi
@@ -61,7 +63,7 @@ services:
     image: mysql:8.0
     container_name: mysql-server
     ports:
-      - "28336:3306"
+      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: tonemirror
