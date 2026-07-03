@@ -17,7 +17,9 @@ services:
     restart: unless-stopped
 
   spring:
-    build: ./tonemirror-spring
+    build:
+      context: ./tonemirror-spring
+      dockerfile: ../spring.Dockerfile
     container_name: spring-server
     volumes:
       - ./storage:/app/storage
@@ -31,7 +33,9 @@ services:
       - mysql
   
   fastapi:
-    build: ./tonemirror-python
+    build:
+      context: ./tonemirror-python
+      dockerfile: ../python.Dockerfile
     container_name: fastapi-server
     environment:
       - IMAGE_PATH=/app/storage
@@ -48,7 +52,9 @@ services:
       - mysql
   
   frontend:
-    build: ./tonemirror-web
+    build:
+      context: ./tonemirror-web
+      dockerfile: ../web.Dockerfile
     container_name: react-server
   
   mysql:
